@@ -32,17 +32,22 @@ class Weather:
   
   def show_city_weather(self):
     json_data = Weather.get_city_weather(self)
+
+#    with open("weather.json", "w") as f:
+#        json.dump(json_data, f)
     if json_data != False:
-      name = json_data["name"]
-      weather = json_data['weather'][0]["main"]
-      temp = json_data['main']['temp']
-      humidity = json_data['main']['humidity']
-      wind = json_data['wind']['speed']
-      weather_info = f"Город:{self.city}\nПогода: {weather}\nТемпература: {temp}C\nВлажность: {humidity}%\nСкорость ветра: {wind} м/c"
+      dict_weather_info = {} 
+      dict_weather_info['name_city'] = json_data["name"]
+      dict_weather_info['weather'] = json_data['weather'][0]["main"]
+      dict_weather_info['wearher_description'] = json_data['weather'][0]["description"]
+      dict_weather_info['temp'] = json_data['main']['temp']
+      dict_weather_info['humidity'] = json_data['main']['humidity']
+      dict_weather_info['wind'] = json_data['wind']['speed']
+      #weather_info = f"Город:{self.city}\nПогода: {weather}\nТемпература: {temp}C\nВлажность: {humidity}%\nСкорость ветра: {wind} м/c"
       #print(f"Город:{self.city}\nПогода:{weather}\nТемпература:{temp}C\nВлажность:{humidity}%\nСкорость ветра:{wind} м/c")
     else:
-      weather_info = f"Извините нам не известен город:\n{self.city}"
-    return 	weather_info  
+      dict_weather_info = f"Извините нам не известен город:\n{self.city}"
+    return 	dict_weather_info  
 	  
 #weather_moscow = Weather("ташкент")
 #print(weather_moscow.show_city_weather())
