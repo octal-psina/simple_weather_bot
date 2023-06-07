@@ -1,5 +1,9 @@
 # Simple Weather Bot
 
+![image](https://github.com/octal-psina/simple_weather_bot/blob/master/iscreenshots/screenshot_1.jpg)
+
+![image](https://github.com/octal-psina/simple_weather_bot/blob/master/iscreenshots/screenshot_2.jpg)
+
 This is my learning project,the program was created for fun and educational purposes.
 
 ### To start:
