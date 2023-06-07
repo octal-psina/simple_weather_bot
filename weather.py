@@ -1,6 +1,6 @@
 import json
 import requests
-import openweather_key
+import config
 
 
 class Weather:
@@ -9,7 +9,7 @@ class Weather:
 
     def get_lat_lon(self):
         """Получение широты и долготы запрашиваемого города"""
-        url = f"http://api.openweathermap.org/geo/1.0/direct?q={self.city}&limit=1&appid={openweather_key.key}"
+        url = f"http://api.openweathermap.org/geo/1.0/direct?q={self.city}&limit=1&appid={config.KEY}"
         city_lat_lon = requests.get(url).json()
         # обращение к API openweather получение json city lat, lon
         # запись информации в файл json
@@ -23,7 +23,7 @@ class Weather:
             json_data = Weather.get_lat_lon(self)
             lat = json_data[0]["lat"]
             lon = json_data[0]["lon"]
-            url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={openweather_key.key}&units=metric"
+            url = f"https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={config.KEY}&units=metric"
             city_weather = requests.get(url).json()
         # Использую перехват всех ошибок чтобы избежать проблем при обращение к API
         except:
